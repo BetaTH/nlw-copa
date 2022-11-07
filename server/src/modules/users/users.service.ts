@@ -1,10 +1,8 @@
-import { prisma } from "../utils/prisma";
+import { prisma } from "../../utils/prisma";
 
-export default class UserServie {
-  orm = prisma;
-
-  async getUserCount() {
-    const count = await this.orm.user.count();
+export default class UserService {
+  getUserCount() {
+    const count = prisma.user.count();
     return count;
   }
 }

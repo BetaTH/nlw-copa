@@ -1,11 +1,15 @@
-import { FastifyReply, FastifyRequest } from "fastify";
-import UserServie from "./users.service";
+import {
+  FastifyRequest as serverResquest,
+  FastifyReply as serverResponse,
+} from "fastify";
+
+import UserService from "./users.service";
 
 export default class UserContronler {
-  constructor(public service: UserServie) {}
+  constructor(public service: UserService) {}
 
-  async handleUserCount(request: FastifyRequest, reply: FastifyReply) {
-    const count = this.service.getUserCount();
+  async handleUserCount(request: serverResquest, reply: serverResponse) {
+    const count = await this.service.getUserCount();
     return { count };
   }
 }
